@@ -25,11 +25,17 @@ public class RiotGamesRepository {
 
 
     public Summoner getSummonerInform(String summonerName) {
-        /*Query query = Query.query(Criteria.where("_name").is(summonerName));
-        Summoner summoner = mongoTemplate.findOne(query, Summoner.class);*/
-        Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
-        saveSummonerInfo(summoner);
+        Query query = Query.query(Criteria.where("_name").is(summonerName));
+        Summoner summonerA = mongoTemplate.findOne(query, Summoner.class);
 
-        return summoner;
+        if(summonerA == null){
+            Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
+            saveSummonerInfo(summoner);
+            return summoner;
+        }else{
+            return summonerA;
+        }
+        /*Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
+        saveSummonerInfo(summoner);*/
     }
 }
