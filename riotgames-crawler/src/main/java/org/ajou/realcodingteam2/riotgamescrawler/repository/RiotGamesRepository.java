@@ -1,10 +1,13 @@
 package org.ajou.realcodingteam2.riotgamescrawler.repository;
 
 import org.ajou.realcodingteam2.riotgamescrawler.api.RiotGamesOpenApiClient;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.GameDetail;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.AccumulatorOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
@@ -22,6 +25,8 @@ public class RiotGamesRepository {
 
     }
 
+
+
     public Summoner getSummonerInform(String summonerName) {
         Query query = Query.query(Criteria.where("_name").is(summonerName));
         Summoner summonerA = mongoTemplate.findOne(query, Summoner.class);
@@ -33,12 +38,11 @@ public class RiotGamesRepository {
         }else{
             return summonerA;
         }
-        /*Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
-        saveSummonerInfo(summoner);*/
     }
 
     //do
     public void saveLeagueInfo(League league){
+
         League savedLeague = mongoTemplate.save(league);
     }
 
@@ -54,5 +58,33 @@ public class RiotGamesRepository {
         } else {
             return leagueA;
         }
+    }
+    public void saveGameInfo(Game game){
+        Game savedGame = mongoTemplate.save(game);
+    }
+
+    public Game getGameInfo(String summonerName) {
+        /*Summoner summoner = getSummonerInform(summonerName);
+        Query query = Query.query(Criteria.where("_accountId").is(summoner.getAccountId()));
+        Game gameA = mongoTemplate.findOne(query, Game.class);
+        if(gameA == null){
+            Game game = null;
+            Game.matches A = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            game.setAccountId(summoner.getAccountId());
+            game.setGameId(A);
+            return game;
+        }
+        else{
+            return gameA;
+        }*/
+        Summoner summoner = getSummonerInform(summonerName);
+        Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+        game.setAccountId(summoner.getAccountId());
+        saveGameInfo(game);
+        return game;
+    }
+
+    public GameDetail getGameDetailInfo(String summonerName) {
+        return null;
     }
 }
