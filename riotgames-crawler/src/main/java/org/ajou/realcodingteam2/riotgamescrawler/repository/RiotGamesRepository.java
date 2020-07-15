@@ -78,6 +78,7 @@ public class RiotGamesRepository {
         }*/
         Summoner summoner = getSummonerInform(summonerName);
         Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+        game.setAccountId(summoner.getAccountId());
         saveGameInfo(game);
         return game;
     }
