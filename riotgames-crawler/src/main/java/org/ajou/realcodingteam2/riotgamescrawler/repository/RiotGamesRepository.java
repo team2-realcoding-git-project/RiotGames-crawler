@@ -34,6 +34,10 @@ public class RiotGamesRepository {
     private List<String> fiveGame;
 
 
+    //게임 전적 확인할때 필요
+    private int participantId =0 ;
+    private int championId =0;
+
 
     public void saveSummonerInfo(Summoner summoner){
         Summoner savedSummoner = mongoTemplate.save(summoner);
@@ -123,9 +127,27 @@ public class RiotGamesRepository {
                 //gameId 다섯개 추가
                 fiveGame.add(game.getMatches().get(i).getGameId());
             }
-            //게임 아이디로 조회
+            //게임 아이디로 조회   소환사명과 같은 이름이 있는 부분 찾기
             MatchDto matchDto = riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(0));
             matchDtoDb.save(matchDto);
+            for(int k=0; k<10;k++) {
+
+                if(matchDto.getParticipantIdentities().get(k).getPlayer().getSummonerName().equals(summonerName)){
+                    participantId = matchDto.getParticipantIdentities().get(k).getParticipantId();
+
+                    championId= matchDto.getParticipants().get(participantId).getChampionId();
+                    saveFinalGameInformation.setChampionId(championId);
+                    saveFinalGameInformation.setKills(matchDto.getParticipants().get(participantId).getStats().getKills());
+                    saveFinalGameInformation.setAssists(matchDto.getParticipants().get(participantId).getStats().getAssists());
+                    saveFinalGameInformation.setDeaths(matchDto.getParticipants().get(participantId).getStats().getDeaths());
+                    saveFinalGameInformation.setWin(matchDto.getParticipants().get(participantId).getStats().isWin());
+
+
+                    // 전적 조회시 participantId 필요
+                }
+
+            }
+
 
 
 
