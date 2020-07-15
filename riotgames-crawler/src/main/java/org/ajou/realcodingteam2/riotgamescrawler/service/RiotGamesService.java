@@ -13,7 +13,7 @@ package org.ajou.realcodingteam2.riotgamescrawler.service;
         import org.springframework.scheduling.annotation.Scheduled;
         import org.springframework.stereotype.Service;
 
-        import javax.xml.ws.soap.Addressing;
+        //import javax.xml.ws.soap.Addressing;
 
 @Service
 @EnableScheduling
