@@ -1,8 +1,7 @@
 package org.ajou.realcodingteam2.riotgamescrawler.api;
 
-import io.swagger.models.HttpMethod;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.GameDetail;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class RiotGamesOpenApiClient {
         Game game = restTemplate.getForObject(GAMEINFO_REQUEST, Game.class, accountId);
         return game;
     }
-    public GameDetail getGameDetailInfo(String gameId){
+    public MatchDto getGameDetailInfo(String gameId){
         return null;
     }
 }
