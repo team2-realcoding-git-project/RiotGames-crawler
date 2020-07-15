@@ -1,6 +1,7 @@
 package org.ajou.realcodingteam2.riotgamescrawler.service;
 
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.GameDetail;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
 import org.ajou.realcodingteam2.riotgamescrawler.repository.RiotGamesRepository;
@@ -30,5 +31,9 @@ public class RiotGamesService {
 
     public Game getGameInfo(String summonerName) {
         return riotGamesRepository.getGameInfo(summonerName);
+    }
+
+    public GameDetail getGameDetailInfo(String summonerName) {
+        return riotGamesRepository.getGameDetailInfo(summonerName);
     }
 }

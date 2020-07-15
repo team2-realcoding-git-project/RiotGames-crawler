@@ -2,6 +2,7 @@ package org.ajou.realcodingteam2.riotgamescrawler.repository;
 
 import org.ajou.realcodingteam2.riotgamescrawler.api.RiotGamesOpenApiClient;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.GameDetail;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,5 +82,9 @@ public class RiotGamesRepository {
         game.setAccountId(summoner.getAccountId());
         saveGameInfo(game);
         return game;
+    }
+
+    public GameDetail getGameDetailInfo(String summonerName) {
+        return null;
     }
 }
