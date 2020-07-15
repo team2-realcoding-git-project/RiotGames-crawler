@@ -30,7 +30,7 @@ public class RiotGamesOpenApiClient {
         Summoner summoner = restTemplate.getForObject(SUMMONERINFO_REQUEST, Summoner.class, summonerName);
         return summoner;
     }
-/*
+
     public League getLeagueInfo(String summonerId){
         League[] leagues = restTemplate.getForObject(LEAGUEINFO_REQUEST, League[].class, summonerId);
         for(League league : leagues) {
@@ -39,16 +39,8 @@ public class RiotGamesOpenApiClient {
         return null;
     }
 
- */
-    public League getLeagueInfo(String summonerId){
-
-        log.info("summonerId : {}", summonerId);
-        League league = restTemplate.getForObject(LEAGUEINFO_REQUEST, League.class, summonerId);
 
 
-        log.info("summonerId : {}", summonerId);
-        return league;
-    }
 
 
     public Game getGameInfo(String accountId){
