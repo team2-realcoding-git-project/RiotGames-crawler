@@ -1,9 +1,6 @@
 package org.ajou.realcodingteam2.riotgamescrawler.service;
 
-        import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
-        import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
-        import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
-        import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
+        import org.ajou.realcodingteam2.riotgamescrawler.domain.*;
         import org.ajou.realcodingteam2.riotgamescrawler.repository.RiotGamesRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.scheduling.annotation.EnableScheduling;
@@ -28,8 +25,13 @@ public class RiotGamesService {
     public Game getGameInfo(String summonerName) {
         return riotGamesRepository.getGameInfo(summonerName);
     }
-
+/*
     public MatchDto getGameDetailInfo(String summonerName) {
         return riotGamesRepository.getGameDetailInfo(summonerName);
+    }*/
+
+    public FinalGameInformation getFinalGameInformation(String summonerName) {
+
+        return riotGamesRepository.findFinalGameInformation(summonerName);
     }
 }

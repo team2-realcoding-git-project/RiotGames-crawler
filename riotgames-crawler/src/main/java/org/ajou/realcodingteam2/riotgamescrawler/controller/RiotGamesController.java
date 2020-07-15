@@ -1,9 +1,6 @@
 package org.ajou.realcodingteam2.riotgamescrawler.controller;
 
-import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.*;
 import org.ajou.realcodingteam2.riotgamescrawler.service.RiotGamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +13,7 @@ public class RiotGamesController {
     @Autowired
     private RiotGamesService riotGamesService;
 
-    @GetMapping("/riotGamesInfo-service/{summonerName}")
+    /*@GetMapping("/riotGamesInfo-service/{summonerName}")
     public Summoner getSummonerInfo(@PathVariable String summonerName){
         return riotGamesService.getSummonerInform(summonerName);
 
@@ -29,10 +26,11 @@ public class RiotGamesController {
     public Game getGameInfo(@PathVariable String summonerName){
         return riotGamesService.getGameInfo(summonerName);
 
+    }*/
+    @GetMapping("/riotGamesInfo-game/{summonerName}")
+    public FinalGameInformation getGameDetailInfo(@PathVariable String summonerName){
+        return riotGamesService.getFinalGameInformation(summonerName);
     }
-    @GetMapping
-    public MatchDto getGameDetailInfo(@PathVariable String summonerName){
-        return riotGamesService.getGameDetailInfo(summonerName);
-    }
+
 
 }

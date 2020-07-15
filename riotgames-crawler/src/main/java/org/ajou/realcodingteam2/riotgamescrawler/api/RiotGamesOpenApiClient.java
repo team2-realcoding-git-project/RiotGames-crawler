@@ -20,12 +20,15 @@ public class RiotGamesOpenApiClient {
 
     private static final String GAMEINFO_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/{accountId}?api_key=RGAPI-442464bb-d44a-41b9-a930-1d718af5ab8e";
 
+    private static final String MATCHGAME_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matches/{matchId}?api_key=RGAPI-442464bb-d44a-41b9-a930-1d718af5ab8e";
+
+
 
     public Summoner getSummonerInfo(String summonerName){
         Summoner summoner = restTemplate.getForObject(SUMMONERINFO_REQUEST, Summoner.class, summonerName);
         return summoner;
     }
-
+/*
     public League getLeagueInfo(String summonerId){
         League[] leagues = restTemplate.getForObject(LEAGUEINFO_REQUEST, League[].class, summonerId);
         for(League league : leagues) {
@@ -33,11 +36,23 @@ public class RiotGamesOpenApiClient {
         }
         return null;
     }
+
+ */
+    public League getLeagueInfo(String summonerId){
+
+        League league = restTemplate.getForObject(LEAGUEINFO_REQUEST, League.class, summonerId);
+
+
+        return league;
+    }
+
     public Game getGameInfo(String accountId){
         Game game = restTemplate.getForObject(GAMEINFO_REQUEST, Game.class, accountId);
         return game;
     }
-    public MatchDto getGameDetailInfo(String gameId){
-        return null;
+    public MatchDto getMatchDtoInfo(String matchId){
+        MatchDto matchDto = restTemplate.getForObject(MATCHGAME_REQUEST, MatchDto.class, matchId);
+
+        return matchDto;
     }
 }
