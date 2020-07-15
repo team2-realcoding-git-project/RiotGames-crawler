@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -36,7 +37,9 @@ public class RiotGamesRepository {
 
 
 
-    private List<String> fiveGame;
+
+    private List<String> fiveGame = new ArrayList<>();
+
 
 
     //게임 전적 확인할때 필요
@@ -145,18 +148,19 @@ public class RiotGamesRepository {
             //게임 아이디로 조회   소환사명과 같은 이름이 있는 부분 찾기
             MatchDto matchDto = riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(0));
             matchDtoDb.save(matchDto);
+            log.info("MatchId {}", fiveGame.get(0));
             for(int k=0; k<10;k++) {
 
                 if(matchDto.getParticipantIdentities().get(k).getPlayer().getSummonerName().equals(summonerName)){
                     participantId = matchDto.getParticipantIdentities().get(k).getParticipantId();
 
-                    championId= matchDto.getParticipants().get(participantId).getChampionId();
+                    championId= matchDto.getParticipants().get(participantId-1).getChampionId();
                     saveFinalGameInformation.setChampionId(championId);
                     log.info("summonerName {}", championId);
-                    saveFinalGameInformation.setKills(matchDto.getParticipants().get(participantId).getStats().getKills());
-                    saveFinalGameInformation.setAssists(matchDto.getParticipants().get(participantId).getStats().getAssists());
-                    saveFinalGameInformation.setDeaths(matchDto.getParticipants().get(participantId).getStats().getDeaths());
-                    saveFinalGameInformation.setWin(matchDto.getParticipants().get(participantId).getStats().isWin());
+                    saveFinalGameInformation.setKills(matchDto.getParticipants().get(participantId-1).getStats().getKills());
+                    saveFinalGameInformation.setAssists(matchDto.getParticipants().get(participantId-1).getStats().getAssists());
+                    saveFinalGameInformation.setDeaths(matchDto.getParticipants().get(participantId-1).getStats().getDeaths());
+                    saveFinalGameInformation.setWin(matchDto.getParticipants().get(participantId-1).getStats().isWin());
 
 
                     finalGameInformationDb.save(saveFinalGameInformation);
