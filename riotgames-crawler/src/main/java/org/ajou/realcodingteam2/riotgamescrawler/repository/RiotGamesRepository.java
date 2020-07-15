@@ -38,13 +38,10 @@ public class RiotGamesRepository {
 
 
 
-    private List<String> fiveGame = new ArrayList<>();
 
 
 
-    //게임 전적 확인할때 필요
-    private int participantId =0 ;
-    private int championId =0;
+
 
 
     public void saveSummonerInfo(Summoner summoner){
@@ -113,6 +110,9 @@ public class RiotGamesRepository {
 
 
     public FinalGameInformation findFinalGameInformation(String summonerName) {
+        List<String> fiveGame = new ArrayList<>();
+        int participantId =0 ;
+        int championId =0;
         FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
 
         Query query = Query.query(Criteria.where("_id").is(summonerName));
@@ -151,9 +151,12 @@ public class RiotGamesRepository {
             log.info("MatchId {}", fiveGame.get(0));
             for(int k=0; k<10;k++) {
 
+
                 if(matchDto.getParticipantIdentities().get(k).getPlayer().getSummonerName().equals(summonerName)){
+                    log.info("MatchId {}", fiveGame.get(0));
                     participantId = matchDto.getParticipantIdentities().get(k).getParticipantId();
 
+                    log.info("parti Id {}", participantId);
                     championId= matchDto.getParticipants().get(participantId-1).getChampionId();
                     saveFinalGameInformation.setChampionId(championId);
                     log.info("summonerName {}", championId);
