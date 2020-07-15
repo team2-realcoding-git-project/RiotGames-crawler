@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class RiotGamesRepository {
 
@@ -28,6 +30,8 @@ public class RiotGamesRepository {
 
     @Autowired
     private FinalGameInformation saveFinalGameInformation;
+    @Autowired //gameId 다섯개 담는 배열
+    private List<String> fiveGame;
 
 
 
@@ -114,10 +118,16 @@ public class RiotGamesRepository {
             Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             gameDb.save(game);
 
-            for(int i=0;i<5;i++) {
-                game.getMatches().get(0).getGameId();
 
+            for(int i=0;i<5;i++) {
+                //gameId 다섯개 추가
+                fiveGame.add(game.getMatches().get(i).getGameId());
             }
+            //게임 아이디로 조회
+            MatchDto matchDto = riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(0));
+            matchDtoDb.save(matchDto);
+
+
 
         }
         return finalGameInformation;
