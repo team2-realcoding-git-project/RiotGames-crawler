@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class MatchDto {
+
     private List<ParticipantIdentityDto> participantIdentities;
     private List<ParticipantDto> participants;
 

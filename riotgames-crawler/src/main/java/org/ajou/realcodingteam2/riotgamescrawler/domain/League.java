@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 
 @Data
 public class League {
+
     private String tier;
     private String rank;
     private String summonerId;

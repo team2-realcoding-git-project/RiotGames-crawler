@@ -1,5 +1,6 @@
 package org.ajou.realcodingteam2.riotgamescrawler.api;
 
+import lombok.extern.slf4j.Slf4j;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @Service
 public class RiotGamesOpenApiClient {
 
@@ -40,11 +42,14 @@ public class RiotGamesOpenApiClient {
  */
     public League getLeagueInfo(String summonerId){
 
+        log.info("summonerId : {}", summonerId);
         League league = restTemplate.getForObject(LEAGUEINFO_REQUEST, League.class, summonerId);
 
 
+        log.info("summonerId : {}", summonerId);
         return league;
     }
+
 
     public Game getGameInfo(String accountId){
         Game game = restTemplate.getForObject(GAMEINFO_REQUEST, Game.class, accountId);

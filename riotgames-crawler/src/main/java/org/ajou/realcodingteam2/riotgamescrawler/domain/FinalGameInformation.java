@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 public class FinalGameInformation {
     @Id
     private String summonerName;
+
     private boolean win;
     private int championId;
     private int kills;

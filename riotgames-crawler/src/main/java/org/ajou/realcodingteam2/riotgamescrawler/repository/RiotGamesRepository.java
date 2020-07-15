@@ -1,5 +1,6 @@
 package org.ajou.realcodingteam2.riotgamescrawler.repository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.ajou.realcodingteam2.riotgamescrawler.api.RiotGamesOpenApiClient;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Slf4j
 @Repository
 public class RiotGamesRepository {
 
@@ -28,9 +30,12 @@ public class RiotGamesRepository {
     @Autowired
     private MongoTemplate finalGameInformationDb;
 
-    @Autowired
-    private FinalGameInformation saveFinalGameInformation;
-    @Autowired //gameId 다섯개 담는 배열
+
+
+
+
+
+
     private List<String> fiveGame;
 
 
@@ -98,30 +103,40 @@ public class RiotGamesRepository {
         }*/
         Summoner summoner = getSummonerInform(summonerName);
         Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
-        game.setAccountId(summoner.getAccountId());
+        //game.setAccountId(summoner.getAccountId());
         saveGameInfo(game);
         return game;
     }
 
 
     public FinalGameInformation findFinalGameInformation(String summonerName) {
-        Query query = Query.query(Criteria.where("_id").is(summonerName);
+        FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
+
+        Query query = Query.query(Criteria.where("_id").is(summonerName));
         FinalGameInformation finalGameInformation = finalGameInformationDb.findOne(query, FinalGameInformation.class);
         if(finalGameInformation == null){
             Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
             summonerNameDb.save(summoner);
 
+            log.info("summonerName {}", summoner);
+
+            log.info("summonerName {}", summoner);
+
             saveFinalGameInformation.setSummonerName(summonerName);
 
+            log.info("summonerName {}", summoner);
             League league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
+            log.info("summonerName {}", summoner);
             leagueDb.save(league);
 
+            log.info("summonerName {}", league);
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
 
             Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             gameDb.save(game);
 
+            log.info("summonerRank {}", league);
 
             for(int i=0;i<5;i++) {
                 //gameId 다섯개 추가
@@ -137,12 +152,14 @@ public class RiotGamesRepository {
 
                     championId= matchDto.getParticipants().get(participantId).getChampionId();
                     saveFinalGameInformation.setChampionId(championId);
+                    log.info("summonerName {}", championId);
                     saveFinalGameInformation.setKills(matchDto.getParticipants().get(participantId).getStats().getKills());
                     saveFinalGameInformation.setAssists(matchDto.getParticipants().get(participantId).getStats().getAssists());
                     saveFinalGameInformation.setDeaths(matchDto.getParticipants().get(participantId).getStats().getDeaths());
                     saveFinalGameInformation.setWin(matchDto.getParticipants().get(participantId).getStats().isWin());
 
 
+                    finalGameInformationDb.save(saveFinalGameInformation);
                     // 전적 조회시 participantId 필요
                 }
 
@@ -151,6 +168,7 @@ public class RiotGamesRepository {
 
 
 
+        return saveFinalGameInformation;
         }
         return finalGameInformation;
     }
