@@ -7,6 +7,8 @@ import java.util.List;
 
 @Data
 public class FinalGameInformation {
+    private String tier;
+    private String rank;
     private List<GameDetail> gameInformation;
 
     @Data
@@ -19,7 +21,5 @@ public class FinalGameInformation {
         private int kills;
         private int deaths;
         private int assists;
-        private String tier;
-        private String rank;
     }
 }
