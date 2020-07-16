@@ -7,12 +7,11 @@ import java.util.List;
 
 @Data
 public class Game {
-    @Id
-    private String accountId;
+    //@Id
+    //private String accountId;
     private List<Matches> matches;
     @Data
     public static class Matches{
         private String gameId;
     }
-
 }

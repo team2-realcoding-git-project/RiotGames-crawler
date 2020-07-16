@@ -1,25 +1,29 @@
 package org.ajou.realcodingteam2.riotgamescrawler.api;
 
-import io.swagger.models.HttpMethod;
+import lombok.extern.slf4j.Slf4j;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.GameDetail;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @Service
 public class RiotGamesOpenApiClient {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String SUMMONERINFO_REQUEST = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key=RGAPI-27cfbedd-ba4b-4b0f-8eb9-1c42338d3b37";
+    private static final String SUMMONERINFO_REQUEST = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key=RGAPI-55259ec3-f685-481f-b73a-a1aa6e19fefc";
 
-    private static final String LEAGUEINFO_REQUEST = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key=RGAPI-27cfbedd-ba4b-4b0f-8eb9-1c42338d3b37";
+    private static final String LEAGUEINFO_REQUEST = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key=RGAPI-55259ec3-f685-481f-b73a-a1aa6e19fefc";
 
-    private static final String GAMEINFO_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/{accountId}?api_key=RGAPI-27cfbedd-ba4b-4b0f-8eb9-1c42338d3b37";
+    private static final String GAMEINFO_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/{accountId}?api_key=RGAPI-55259ec3-f685-481f-b73a-a1aa6e19fefc";
+
+    private static final String MATCHGAME_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matches/{matchId}?api_key=RGAPI-55259ec3-f685-481f-b73a-a1aa6e19fefc";
+
 
 
     public Summoner getSummonerInfo(String summonerName){
@@ -34,11 +38,18 @@ public class RiotGamesOpenApiClient {
         }
         return null;
     }
+
+
+
+
+
     public Game getGameInfo(String accountId){
         Game game = restTemplate.getForObject(GAMEINFO_REQUEST, Game.class, accountId);
         return game;
     }
-    public GameDetail getGameDetailInfo(String gameId){
-        return null;
+    public MatchDto getMatchDtoInfo(String matchId){
+        MatchDto matchDto = restTemplate.getForObject(MATCHGAME_REQUEST, MatchDto.class, matchId);
+
+        return matchDto;
     }
 }
