@@ -101,7 +101,8 @@ public class RiotGamesRepository {
 
 
     public FinalGameInformation findFinalGameInformation(String summonerName) {
-        MatchDto matchDto = new MatchDto();
+        //MatchDto matchDto = new MatchDto();//배열로 만들기
+        List<MatchDto> matchDto = new ArrayList<>();
 
 
 
@@ -110,68 +111,87 @@ public class RiotGamesRepository {
 
 
         if(finalGameInformation == null){
+            log.info("SummpnerNAme {}", summonerName);
             List<String> fiveGame = new ArrayList<>();
             int participantId =0 ;
             int championId =0;
-            FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
+            int g,k;
+            ArrayList<FinalGameInformation.GameDetail> gameDetailArrayList = new ArrayList<>();
+            //FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
             FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
             Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
             summonerNameDb.save(summoner);
+            log.info("SummpnerNAme {}", summonerName);
 
 
-            gameDetail.setSummonerName(summonerName);
+            saveFinalGameInformation.setSummonerName(summonerName);
 
 
+            log.info("SummpnerNAme {}", summonerName);
             League league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
             leagueDb.save(league);
 
-            gameDetail.setRank(league.getRank());
-            gameDetail.setTier(league.getTier());
+            saveFinalGameInformation.setRank(league.getRank());
+            saveFinalGameInformation.setTier(league.getTier());
+            log.info("SummpnerNAme {}", summonerName);
 
             Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             gameDb.save(game);
 
 
 
+            log.info("SummpnerNAme {}", summonerName);
             for(int i=0;i<5;i++) {
                 //gameId 다섯개 추가
                 fiveGame.add(game.getMatches().get(i).getGameId());
             }
+            log.info("MatchId {}", fiveGame);
             //게임 아이디로 조회   소환사명과 같은 이름이 있는 부분 찾기
-            for(int g=0;g<5;g++) {
-                matchDto = riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(g));
-                matchDtoDb.save(matchDto);
+            for(g=0;g<5;g++) {
+                matchDto.add(riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(g)));
+                matchDtoDb.save(matchDto.get(g));
+                log.info("matchId : {}", fiveGame.get(g));
 
-                for (int k = 0; k < 10; k++) {
+                for (k = 0; k < 10; k++) {
+
+                    if (matchDto.get(g).getParticipantIdentities().get(k).getPlayer().getSummonerName().equals(summonerName)) {
+                        FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
+
+                        participantId = matchDto.get(g).getParticipantIdentities().get(k).getParticipantId();
 
 
-                    if (matchDto.getParticipantIdentities().get(k).getPlayer().getSummonerName().equals(summonerName)) {
+                        championId = matchDto.get(g).getParticipants().get(participantId - 1).getChampionId();
 
-                        participantId = matchDto.getParticipantIdentities().get(k).getParticipantId();
-
-
-                        championId = matchDto.getParticipants().get(participantId - 1).getChampionId();
 
                         gameDetail.setChampionId(championId);
 
-                        gameDetail.setKills(matchDto.getParticipants().get(participantId - 1).getStats().getKills());
-                        gameDetail.setAssists(matchDto.getParticipants().get(participantId - 1).getStats().getAssists());
-                        gameDetail.setDeaths(matchDto.getParticipants().get(participantId - 1).getStats().getDeaths());
-                        gameDetail.setWin(matchDto.getParticipants().get(participantId - 1).getStats().isWin());
+                        gameDetail.setKills(matchDto.get(g).getParticipants().get(participantId - 1).getStats().getKills());
+                        gameDetail.setAssists(matchDto.get(g).getParticipants().get(participantId - 1).getStats().getAssists());
+                        gameDetail.setDeaths(matchDto.get(g).getParticipants().get(participantId - 1).getStats().getDeaths());
+                        gameDetail.setWin(matchDto.get(g).getParticipants().get(participantId - 1).getStats().isWin());
 
 
-                        saveFinalGameInformation.getGameInformation().add(gameDetail);
-                        log.info("MatchId {}", saveFinalGameInformation);
+                        gameDetailArrayList.add(gameDetail);
+
+                        log.info("gamedetailArray111 {}", gameDetailArrayList);
+                        log.info("gamedetail {}", gameDetail);
                         //finalGameInformationDb.save(saveFinalGameInformation);
                         // 전적 조회시 participantId 필요
                         //return saveFinalGameInformation;
                     }
 
                 }
+                log.info("gamedetailArray222222 {}", gameDetailArrayList);
+
             }
+
+
+
+
+            log.info("gameDeatilArrayList : {}", gameDetailArrayList);
+            saveFinalGameInformation.setGameInformation(gameDetailArrayList);
             finalGameInformationDb.save(saveFinalGameInformation);
             return saveFinalGameInformation;
-
 
 
 
