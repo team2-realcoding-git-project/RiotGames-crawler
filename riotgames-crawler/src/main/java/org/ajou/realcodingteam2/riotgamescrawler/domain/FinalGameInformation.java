@@ -7,14 +7,14 @@ import java.util.List;
 
 @Data
 public class FinalGameInformation {
+    @Id
+    private String summonerName;
     private String tier;
     private String rank;
     private List<GameDetail> gameInformation;
 
     @Data
     public static class GameDetail {
-        @Id
-        private String summonerName;
 
         private boolean win;
         private int championId;
