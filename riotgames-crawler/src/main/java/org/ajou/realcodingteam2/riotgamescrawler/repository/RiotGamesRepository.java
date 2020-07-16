@@ -64,24 +64,18 @@ public class RiotGamesRepository {
     }
 
     public Game getGameInfo(String summonerName) {
-        /*Summoner summoner = getSummonerInform(summonerName);
+        Summoner summoner = getSummonerInform(summonerName);
         Query query = Query.query(Criteria.where("_accountId").is(summoner.getAccountId()));
         Game gameA = mongoTemplate.findOne(query, Game.class);
         if(gameA == null){
-            Game game = null;
-            Game.matches A = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             game.setAccountId(summoner.getAccountId());
-            game.setGameId(A);
+            saveGameInfo(game);
             return game;
         }
         else{
             return gameA;
-        }*/
-        Summoner summoner = getSummonerInform(summonerName);
-        Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
-        game.setAccountId(summoner.getAccountId());
-        saveGameInfo(game);
-        return game;
+        }
     }
 
     public GameDetail getGameDetailInfo(String summonerName) {
