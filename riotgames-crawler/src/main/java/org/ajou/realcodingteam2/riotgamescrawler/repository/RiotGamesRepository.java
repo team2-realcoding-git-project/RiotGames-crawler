@@ -79,26 +79,18 @@ public class RiotGamesRepository {
     }
 
     public Game getGameInfo(String summonerName) {
-        /*Summoner summoner = getSummonerInform(summonerName);
+        Summoner summoner = getSummonerInform(summonerName);
         Query query = Query.query(Criteria.where("_accountId").is(summoner.getAccountId()));
         Game gameA = mongoTemplate.findOne(query, Game.class);
         if(gameA == null){
-            Game game = null;
-            Game.matches A = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
-            game.setAccountId(summoner.getAccountId());
-            game.setGameId(A);
+            Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            saveGameInfo(game);
             return game;
         }
         else{
             return gameA;
-        }*/
-        Summoner summoner = getSummonerInform(summonerName);
-        Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
-        //game.setAccountId(summoner.getAccountId());
-        saveGameInfo(game);
-        return game;
+        }
     }
-
 
     public FinalGameInformation findFinalGameInformation(String summonerName) {
         //MatchDto matchDto = new MatchDto();//배열로 만들기
@@ -111,46 +103,41 @@ public class RiotGamesRepository {
 
 
         if(finalGameInformation == null){
-            log.info("SummpnerNAme {}", summonerName);
+
+
             List<String> fiveGame = new ArrayList<>();
             int participantId =0 ;
             int championId =0;
             int g,k;
+
             ArrayList<FinalGameInformation.GameDetail> gameDetailArrayList = new ArrayList<>();
             //FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
             FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
             Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
             summonerNameDb.save(summoner);
-            log.info("SummpnerNAme {}", summonerName);
-
-
             saveFinalGameInformation.setSummonerName(summonerName);
-
-
-            log.info("SummpnerNAme {}", summonerName);
             League league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
             leagueDb.save(league);
 
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
-            log.info("SummpnerNAme {}", summonerName);
 
             Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             gameDb.save(game);
 
 
 
-            log.info("SummpnerNAme {}", summonerName);
+
             for(int i=0;i<5;i++) {
                 //gameId 다섯개 추가
                 fiveGame.add(game.getMatches().get(i).getGameId());
             }
-            log.info("MatchId {}", fiveGame);
+           //log.info("MatchId {}", fiveGame);
             //게임 아이디로 조회   소환사명과 같은 이름이 있는 부분 찾기
             for(g=0;g<5;g++) {
                 matchDto.add(riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(g)));
                 matchDtoDb.save(matchDto.get(g));
-                log.info("matchId : {}", fiveGame.get(g));
+                //log.info("matchId : {}", fiveGame.get(g));
 
                 for (k = 0; k < 10; k++) {
 
@@ -173,22 +160,22 @@ public class RiotGamesRepository {
 
                         gameDetailArrayList.add(gameDetail);
 
-                        log.info("gamedetailArray111 {}", gameDetailArrayList);
-                        log.info("gamedetail {}", gameDetail);
+                        //log.info("gamedetailArray111 {}", gameDetailArrayList);
+                        //log.info("gamedetail {}", gameDetail);
                         //finalGameInformationDb.save(saveFinalGameInformation);
                         // 전적 조회시 participantId 필요
                         //return saveFinalGameInformation;
                     }
 
                 }
-                log.info("gamedetailArray222222 {}", gameDetailArrayList);
+                //log.info("gamedetailArray222222 {}", gameDetailArrayList);
 
             }
 
 
 
 
-            log.info("gameDeatilArrayList : {}", gameDetailArrayList);
+            //log.info("gameDeatilArrayList : {}", gameDetailArrayList);
             saveFinalGameInformation.setGameInformation(gameDetailArrayList);
             finalGameInformationDb.save(saveFinalGameInformation);
             return saveFinalGameInformation;
