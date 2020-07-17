@@ -14,7 +14,7 @@ public class RiotGamesController {
     @Autowired
     private RiotGamesService riotGamesService;
 
-    /*@GetMapping("/riotGamesInfo-service/{summonerName}")
+    @GetMapping("/riotGamesInfo-service/{summonerName}")
     public Summoner getSummonerInfo(@PathVariable String summonerName){
         return riotGamesService.getSummonerInform(summonerName);
 
@@ -23,11 +23,11 @@ public class RiotGamesController {
     public League getLeagueInfo(@PathVariable String summonerName){
         return riotGamesService.getLeagueInform(summonerName);
     }
-    @GetMapping("/riotGamesInfo-game/{summonerName}")
+    @GetMapping("/riotGamesInfo-gameId/{summonerName}")
     public Game getGameInfo(@PathVariable String summonerName){
         return riotGamesService.getGameInfo(summonerName);
 
-    }*/
+    }
     @GetMapping("/riotGamesInfo-game/{summonerName}")
     public FinalGameInformation getGameDetailInfo(@RequestParam String summonerName){
         return riotGamesService.getFinalGameInformation(summonerName);

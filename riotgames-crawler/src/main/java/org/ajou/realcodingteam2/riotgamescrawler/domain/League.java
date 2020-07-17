@@ -9,8 +9,8 @@ public class League {
     private String tier;
     private String rank;
     private String queueType;
-    private String summonerId;
     @Id
+    private String summonerId;
     private String summonerName;
 
 
