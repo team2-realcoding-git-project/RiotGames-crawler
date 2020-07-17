@@ -75,6 +75,7 @@ public class RiotGamesRepository {
         }
     }
     public void saveGameInfo(Game game){
+
         Game savedGame = mongoTemplate.save(game);
     }
 
@@ -91,6 +92,7 @@ public class RiotGamesRepository {
             return gameA;
         }
     }
+
 
     public FinalGameInformation findFinalGameInformation(String summonerName) {
         //MatchDto matchDto = new MatchDto();//배열로 만들기
@@ -113,18 +115,16 @@ public class RiotGamesRepository {
             ArrayList<FinalGameInformation.GameDetail> gameDetailArrayList = new ArrayList<>();
             //FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
             FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
-            Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
-            summonerNameDb.save(summoner);
-            saveFinalGameInformation.setSummonerName(summonerName);
-            League league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
-            leagueDb.save(league);
+            Summoner summoner = getSummonerInform(summonerName);
+            //summonerNameDb.save(summoner);
+            saveFinalGameInformation.setSummonerName(summoner.getName());
+            League league = getLeagueInform(summoner.getId());
+            //leagueDb.save(league);
 
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
 
-            Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
-            gameDb.save(game);
-
+            Game game = getGameInfo(summoner.getAccountId());
 
 
 

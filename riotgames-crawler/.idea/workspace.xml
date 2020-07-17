@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7ceaadaf-53b1-4315-accf-1557c27624f8" name="Default Changelist" comment="many variable changed and FinalGameInformation.GameDetail gameDetail variable move location from local variable to for loop">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/repository/RiotGamesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/repository/RiotGamesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="lol-crawler-yoosihyeoun" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/lol-crawler-yoosihyeoun" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="lol-crawler-yoosihyeoun" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="lol_crawler_yoosiheyoun" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="team2-realcoding-git-project" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="riotgames-crawler" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1eiK6TJLUjjrwdCkfIhyC5EjBrY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="RiotgamesCrawlerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.ajou.realcodingteam2.riotgamescrawler.RiotgamesCrawlerApplication" />
+      <module name="riotgames-crawler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ajou.realcodingteam2.riotgamescrawler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RiotgamesCrawlerApplication" />
+        <item itemvalue="Application.RiotgamesCrawlerApplication" />
+        <item itemvalue="Application.RiotgamesCrawlerApplication" />
+        <item itemvalue="Application.RiotgamesCrawlerApplication" />
+        <item itemvalue="Application.RiotgamesCrawlerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ceaadaf-53b1-4315-accf-1557c27624f8" name="Default Changelist" comment="" />
+      <created>1594798797635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594798797635</updated>
+    </task>
+    <task id="LOCAL-00001" summary="riot api update and Summoner.java remove unnecessary variable">
+      <created>1594801334479</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1594801334479</updated>
+    </task>
+    <task id="LOCAL-00002" summary="remove unnecessary variable in League.java">
+      <created>1594801428498</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594801428498</updated>
+    </task>
+    <task id="LOCAL-00003" summary="change domain class GameDetail.java -&gt; MatchDto.java">
+      <created>1594801834060</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1594801834060</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add variable in MatchDto.java">
+      <created>1594802940668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1594802940668</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create empty FinalGameInformation.java">
+      <created>1594803118671</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1594803118671</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add variable FinalGameInformation.java">
+      <created>1594803484442</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594803484442</updated>
+    </task>
+    <task id="LOCAL-00007" summary="create and add findFinalGameInformation method in RiotGamesRepository.java&#10;create and add getMatchDtoInfo method in RiotGamesOpenApiClient.java">
+      <created>1594806542255</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1594806542255</updated>
+    </task>
+    <task id="LOCAL-00008" summary="find recently 5 five game and request Api and save the data in mongoDb in RiotGamesRepository.java">
+      <created>1594807264054</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594807264054</updated>
+    </task>
+    <task id="LOCAL-00009" summary="save data on saveFinalGameInformation variable RiotGamesRepository.java">
+      <created>1594808616320</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1594808616320</updated>
+    </task>
+    <task id="LOCAL-00010" summary="change saveFinalGameInformation initialization">
+      <created>1594811765980</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1594811765980</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add again queueType in League.class">
+      <created>1594812564487</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1594812564487</updated>
+    </task>
+    <task id="LOCAL-00012" summary="change participantId -&gt; participantId-1 because array start 0">
+      <created>1594814249267</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1594814249267</updated>
+    </task>
+    <task id="LOCAL-00013" summary="change position fiveGame, participantId, championId">
+      <created>1594816572595</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1594816572595</updated>
+    </task>
+    <task id="LOCAL-00014" summary="change FinalGameInformation.java in domain package">
+      <created>1594865992999</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1594865992999</updated>
+    </task>
+    <task id="LOCAL-00015" summary="change FinalGameInformation.java in domain package">
+      <created>1594867321312</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1594867321312</updated>
+    </task>
+    <task id="LOCAL-00016" summary="change FinalGameInformation.java in domain package">
+      <created>1594867407248</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1594867407248</updated>
+    </task>
+    <task id="LOCAL-00017" summary="many variable changed and FinalGameInformation.GameDetail gameDetail variable move location from local variable to for loop">
+      <created>1594872055195</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1594872055195</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="riot api update and Summoner.java remove unnecessary variable" />
+    <MESSAGE value="remove unnecessary variable in League.java" />
+    <MESSAGE value="change domain class GameDetail.java -&gt; MatchDto.java" />
+    <MESSAGE value="add variable in MatchDto.java" />
+    <MESSAGE value="create empty FinalGameInformation.java" />
+    <MESSAGE value="add variable FinalGameInformation.java" />
+    <MESSAGE value="3 GetMapping merge 1 GetMapping" />
+    <MESSAGE value="create and add findFinalGameInformation method in RiotGamesRepository.java&#10;create and add getMatchDtoInfo method in RiotGamesOpenApiClient.java" />
+    <MESSAGE value="find recently 5 five game and request Api and save the data in mongoDb in RiotGamesRepository.java" />
+    <MESSAGE value="save data on saveFinalGameInformation variable RiotGamesRepository.java" />
+    <MESSAGE value="change saveFinalGameInformation initialization" />
+    <MESSAGE value="add again queueType in League.class" />
+    <MESSAGE value="change participantId -&gt; participantId-1 because array start 0" />
+    <MESSAGE value="change position fiveGame, participantId, championId" />
+    <MESSAGE value="change FinalGameInformation.java in domain package" />
+    <MESSAGE value="many variable changed and FinalGameInformation.GameDetail gameDetail variable move location from local variable to for loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="many variable changed and FinalGameInformation.GameDetail gameDetail variable move location from local variable to for loop" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="659" y="162" key="#com.intellij.ide.util.MemberChooser" timestamp="1594806011582">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="659" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1707.920@0.0.1707.920" timestamp="1594806011582" />
+    <state x="617" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1594966661302">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="617" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1594966661302" />
+    <state x="566" y="327" key="Github.CreatePullRequestDialog" timestamp="1594874157575">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="566" y="327" key="Github.CreatePullRequestDialog/0.0.1707.920@0.0.1707.920" timestamp="1594874157575" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1594967421459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594967421459" />
+    <state width="1663" height="83" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1594872426309" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1594967421459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594967421459" />
+    <state width="1663" height="83" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1594872426309" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1594967421459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594967421459" />
+    <state width="1663" height="83" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1594872426309" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1594967421459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594967421459" />
+    <state width="1663" height="83" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1594872426309" />
+    <state x="384" y="116" key="Maven.ArtifactSearchDialog" timestamp="1594800786485">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="384" y="116" key="Maven.ArtifactSearchDialog/0.0.1707.920@0.0.1707.920" timestamp="1594800786485" />
+    <state x="446" y="194" key="Vcs.Push.Dialog.v2" timestamp="1594873637286">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="446" y="194" key="Vcs.Push.Dialog.v2/0.0.1707.920@0.0.1707.920" timestamp="1594873637286" />
+    <state x="339" y="189" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1594873731389">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="339" y="189" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1707.920@0.0.1707.920" timestamp="1594873731389" />
+    <state x="510" y="211" key="run.anything.popup" timestamp="1594800883748">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="510" y="211" key="run.anything.popup/0.0.1707.920@0.0.1707.920" timestamp="1594800883748" />
+  </component>
+</project>
