@@ -43,7 +43,7 @@ public class RiotGamesRepository {
 
 
     public Summoner getSummonerInform(String summonerName) {
-        Query query = Query.query(Criteria.where("_name").is(summonerName));
+        Query query = Query.query(Criteria.where("_id").is(summonerName));
         Summoner summonerA = mongoTemplate.findOne(query, Summoner.class);
 
         if(summonerA == null){
@@ -81,10 +81,11 @@ public class RiotGamesRepository {
 
     public Game getGameInfo(String summonerName) {
         Summoner summoner = getSummonerInform(summonerName);
-        Query query = Query.query(Criteria.where("_accountId").is(summoner.getAccountId()));
+        Query query = Query.query(Criteria.where("_id").is(summoner.getAccountId()));
         Game gameA = mongoTemplate.findOne(query, Game.class);
         if(gameA == null){
             Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            game.setAccountId(summoner.getAccountId());
             saveGameInfo(game);
             return game;
         }
@@ -118,13 +119,13 @@ public class RiotGamesRepository {
             Summoner summoner = getSummonerInform(summonerName);
             //summonerNameDb.save(summoner);
             saveFinalGameInformation.setSummonerName(summoner.getName());
-            League league = getLeagueInform(summoner.getId());
+            League league = getLeagueInform(summonerName);
             //leagueDb.save(league);
 
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
 
-            Game game = getGameInfo(summoner.getAccountId());
+            Game game = getGameInfo(summonerName);
 
 
 
@@ -132,7 +133,7 @@ public class RiotGamesRepository {
                 //gameId 다섯개 추가
                 fiveGame.add(game.getMatches().get(i).getGameId());
             }
-           //log.info("MatchId {}", fiveGame);
+            //log.info("MatchId {}", fiveGame);
             //게임 아이디로 조회   소환사명과 같은 이름이 있는 부분 찾기
             for(g=0;g<5;g++) {
                 matchDto.add(riotGamesOpenApiClient.getMatchDtoInfo(fiveGame.get(g)));
