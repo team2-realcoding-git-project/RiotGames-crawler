@@ -74,17 +74,17 @@ public class RiotGamesRepository {
             return leagueA;
         }
     }
-    public void saveGameInfo(MatchlistDto game){
+    public void saveGameInfo(MatchListDto game){
 
-        MatchlistDto savedGame = mongoTemplate.save(game);
+        MatchListDto savedGame = mongoTemplate.save(game);
     }
 
-    public MatchlistDto getGameInfo(String summonerName) {
+    public MatchListDto getGameInfo(String summonerName) {
         SummonerDto summoner = getSummonerInform(summonerName);
         Query query = Query.query(Criteria.where("_id").is(summoner.getAccountId()));
-        MatchlistDto gameA = mongoTemplate.findOne(query, MatchlistDto.class);
+        MatchListDto gameA = mongoTemplate.findOne(query, MatchListDto.class);
         if(gameA == null){
-            MatchlistDto game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            MatchListDto game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             game.setAccountId(summoner.getAccountId());
             saveGameInfo(game);
             return game;
@@ -125,7 +125,7 @@ public class RiotGamesRepository {
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
 
-            MatchlistDto game = getGameInfo(summonerName);
+            MatchListDto game = getGameInfo(summonerName);
 
 
 
