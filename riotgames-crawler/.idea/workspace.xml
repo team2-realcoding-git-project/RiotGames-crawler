@@ -20,8 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ceaadaf-53b1-4315-accf-1557c27624f8" name="Default Changelist" comment="many variable changed and FinalGameInformation.GameDetail gameDetail variable move location from local variable to for loop">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/api/RiotGamesOpenApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/api/RiotGamesOpenApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/MatchlistDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/LeagueEntryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/Summoner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/domain/SummonerDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/repository/RiotGamesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ajou/realcodingteam2/riotgamescrawler/repository/RiotGamesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +93,6 @@
     <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="team2-realcoding-git-project" />
     <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="riotgames-crawler" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1eiK6TJLUjjrwdCkfIhyC5EjBrY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -105,6 +103,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="RiotgamesCrawlerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -129,18 +130,6 @@
         <item itemvalue="Application.RiotgamesCrawlerApplication" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -280,13 +269,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="riot api update and Summoner.java remove unnecessary variable" />
@@ -316,10 +304,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="617" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1594966661302" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1594970027962">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595166868165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594970027962" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1595166868165" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1595166634138">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595166634138" />
     <state x="566" y="327" key="Github.CreatePullRequestDialog" timestamp="1594874157575">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
@@ -364,6 +356,14 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="384" y="116" key="Maven.ArtifactSearchDialog/0.0.1707.920@0.0.1707.920" timestamp="1594800786485" />
+    <state x="429" y="116" width="706" height="592" key="NewModule_or_Project.wizard" timestamp="1595166637162">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="429" y="116" width="706" height="592" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1595166637162" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1595166640473">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595166640473" />
     <state x="446" y="194" key="Vcs.Push.Dialog.v2" timestamp="1594873637286">
       <screen x="0" y="0" width="1707" height="920" />
     </state>

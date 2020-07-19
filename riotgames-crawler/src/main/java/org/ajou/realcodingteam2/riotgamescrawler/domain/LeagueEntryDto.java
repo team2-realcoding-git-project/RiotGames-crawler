@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-public class League {
+public class LeagueEntryDto {
 
     private String tier;
     private String rank;
