@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-public class Summoner {
+public class SummonerDto {
     private String id;
     private String accountId;
     @Id

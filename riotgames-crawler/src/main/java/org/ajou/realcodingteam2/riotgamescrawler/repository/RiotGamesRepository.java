@@ -35,19 +35,19 @@ public class RiotGamesRepository {
 
 
 
-    public void saveSummonerInfo(Summoner summoner){
-        Summoner savedSummoner = mongoTemplate.save(summoner);
+    public void saveSummonerInfo(SummonerDto summoner){
+        SummonerDto savedSummoner = mongoTemplate.save(summoner);
 
     }
 
 
 
-    public Summoner getSummonerInform(String summonerName) {
+    public SummonerDto getSummonerInform(String summonerName) {
         Query query = Query.query(Criteria.where("_id").is(summonerName));
-        Summoner summonerA = mongoTemplate.findOne(query, Summoner.class);
+        SummonerDto summonerA = mongoTemplate.findOne(query, SummonerDto.class);
 
         if(summonerA == null){
-            Summoner summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
+            SummonerDto summoner = riotGamesOpenApiClient.getSummonerInfo(summonerName);
             saveSummonerInfo(summoner);
             return summoner;
         }else{
@@ -56,35 +56,35 @@ public class RiotGamesRepository {
     }
 
     //do
-    public void saveLeagueInfo(League league){
+    public void saveLeagueInfo(LeagueEntryDto league){
 
-        League savedLeague = mongoTemplate.save(league);
+        LeagueEntryDto savedLeague = mongoTemplate.save(league);
     }
 
     //do
-    public League getLeagueInform(String summonerName){
-        Summoner summoner = getSummonerInform(summonerName);
+    public LeagueEntryDto getLeagueInform(String summonerName){
+        SummonerDto summoner = getSummonerInform(summonerName);
         Query query = Query.query(Criteria.where("_id").is(summoner.getId()));
-        League leagueA = mongoTemplate.findOne(query, League.class);
+        LeagueEntryDto leagueA = mongoTemplate.findOne(query, LeagueEntryDto.class);
         if(leagueA == null){
-            League league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
+            LeagueEntryDto league = riotGamesOpenApiClient.getLeagueInfo(summoner.getId());
             saveLeagueInfo(league);
             return league;
         } else {
             return leagueA;
         }
     }
-    public void saveGameInfo(Game game){
+    public void saveGameInfo(MatchlistDto game){
 
-        Game savedGame = mongoTemplate.save(game);
+        MatchlistDto savedGame = mongoTemplate.save(game);
     }
 
-    public Game getGameInfo(String summonerName) {
-        Summoner summoner = getSummonerInform(summonerName);
+    public MatchlistDto getGameInfo(String summonerName) {
+        SummonerDto summoner = getSummonerInform(summonerName);
         Query query = Query.query(Criteria.where("_id").is(summoner.getAccountId()));
-        Game gameA = mongoTemplate.findOne(query, Game.class);
+        MatchlistDto gameA = mongoTemplate.findOne(query, MatchlistDto.class);
         if(gameA == null){
-            Game game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
+            MatchlistDto game = riotGamesOpenApiClient.getGameInfo(summoner.getAccountId());
             game.setAccountId(summoner.getAccountId());
             saveGameInfo(game);
             return game;
@@ -116,16 +116,16 @@ public class RiotGamesRepository {
             ArrayList<FinalGameInformation.GameDetail> gameDetailArrayList = new ArrayList<>();
             //FinalGameInformation.GameDetail gameDetail = new FinalGameInformation.GameDetail();
             FinalGameInformation saveFinalGameInformation = new FinalGameInformation();
-            Summoner summoner = getSummonerInform(summonerName);
+            SummonerDto summoner = getSummonerInform(summonerName);
             //summonerNameDb.save(summoner);
             saveFinalGameInformation.setSummonerName(summoner.getName());
-            League league = getLeagueInform(summonerName);
+            LeagueEntryDto league = getLeagueInform(summonerName);
             //leagueDb.save(league);
 
             saveFinalGameInformation.setRank(league.getRank());
             saveFinalGameInformation.setTier(league.getTier());
 
-            Game game = getGameInfo(summonerName);
+            MatchlistDto game = getGameInfo(summonerName);
 
 
 
