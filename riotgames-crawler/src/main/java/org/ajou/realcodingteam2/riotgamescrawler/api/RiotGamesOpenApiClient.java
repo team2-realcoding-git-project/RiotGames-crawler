@@ -1,10 +1,10 @@
 package org.ajou.realcodingteam2.riotgamescrawler.api;
 
 import lombok.extern.slf4j.Slf4j;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.Game;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchListDto;
 import org.ajou.realcodingteam2.riotgamescrawler.domain.MatchDto;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.League;
-import org.ajou.realcodingteam2.riotgamescrawler.domain.Summoner;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.LeagueEntryDto;
+import org.ajou.realcodingteam2.riotgamescrawler.domain.SummonerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,23 +16,23 @@ public class RiotGamesOpenApiClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String SUMMONERINFO_REQUEST = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key=RGAPI-179ad252-6e34-4b53-bf6d-bd636a8ba976";
+    private static final String SUMMONERINFO_REQUEST = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key=RGAPI-2c484922-2e11-4acc-a79d-a1cb78210959";
 
-    private static final String LEAGUEINFO_REQUEST = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key=RGAPI-179ad252-6e34-4b53-bf6d-bd636a8ba976";
+    private static final String LEAGUEINFO_REQUEST = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key=RGAPI-2c484922-2e11-4acc-a79d-a1cb78210959";
 
-    private static final String GAMEINFO_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/{accountId}?api_key=RGAPI-179ad252-6e34-4b53-bf6d-bd636a8ba976";
+    private static final String GAMEINFO_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/{accountId}?api_key=RGAPI-2c484922-2e11-4acc-a79d-a1cb78210959";
 
-    private static final String MATCHGAME_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matches/{matchId}?api_key=RGAPI-179ad252-6e34-4b53-bf6d-bd636a8ba976";
+    private static final String MATCHGAME_REQUEST = "https://kr.api.riotgames.com/lol/match/v4/matches/{matchId}?api_key=RGAPI-2c484922-2e11-4acc-a79d-a1cb78210959";
 
 
-    public Summoner getSummonerInfo(String summonerName){
-        Summoner summoner = restTemplate.getForObject(SUMMONERINFO_REQUEST, Summoner.class, summonerName);
+    public SummonerDto getSummonerInfo(String summonerName){
+        SummonerDto summoner = restTemplate.getForObject(SUMMONERINFO_REQUEST, SummonerDto.class, summonerName);
         return summoner;
     }
 
-    public League getLeagueInfo(String summonerId){
-        League[] leagues = restTemplate.getForObject(LEAGUEINFO_REQUEST, League[].class, summonerId);
-        for(League league : leagues) {
+    public LeagueEntryDto getLeagueInfo(String summonerId){
+        LeagueEntryDto[] leagues = restTemplate.getForObject(LEAGUEINFO_REQUEST, LeagueEntryDto[].class, summonerId);
+        for(LeagueEntryDto league : leagues) {
             if (league.getQueueType().equals("RANKED_SOLO_5x5")) return league;
         }
         return null;
@@ -42,8 +42,8 @@ public class RiotGamesOpenApiClient {
 
 
 
-    public Game getGameInfo(String accountId){
-        Game game = restTemplate.getForObject(GAMEINFO_REQUEST, Game.class, accountId);
+    public MatchListDto getGameInfo(String accountId){
+        MatchListDto game = restTemplate.getForObject(GAMEINFO_REQUEST, MatchListDto.class, accountId);
         return game;
     }
     public MatchDto getMatchDtoInfo(String matchId){
