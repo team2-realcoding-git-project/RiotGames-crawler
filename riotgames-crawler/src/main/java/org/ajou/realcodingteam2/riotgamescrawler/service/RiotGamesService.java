@@ -28,5 +28,5 @@ public class RiotGamesService {
 
         return riotGamesRepository.findFinalGameInformation(summonerName);
     }
-    
+
 }
